@@ -22,36 +22,35 @@ request — it is submitted as a `surreal-commands` job and picked up by the wor
 
 ```mermaid
 flowchart TB
-  UI[Next.js frontend] --> API[FastAPI /api]
+  UI["Next.js frontend"] --> API["FastAPI /api"]
 
-  API --> AG[/agents/run]
-  API --> RS[/research]
-  API --> ED[/education/material]
-  API --> WF[/workflows]
-  API --> AP[/approvals]
-  API --> IN[/integrations]
+  API --> AG["POST /agents/run"]
+  API --> RS["POST /research"]
+  API --> ED["POST /education/material"]
+  API --> WF["POST /workflows"]
+  API --> AP["POST /approvals"]
+  API --> IN["GET /integrations"]
 
-  AG -->|submit_command| Q[(surreal-commands queue)]
-  WF -->|submit_command| Q
-  Q --> W[Background worker]
+  AG -->|"submit command"| Q[("command queue")]
+  WF -->|"submit command"| Q
+  Q --> W["Background worker"]
 
   subgraph Engines
-    SUP[Supervisor graph<br/>plan → execute → decide → finalize]
-    CTL[Control layer<br/>claim verification + hallucination check]
-    RES[Research graph<br/>gather → synthesize → fact-check]
-    EDU[Education engine<br/>plan + quiz + flashcards]
-    PER[Persona engine]
-    ACT[Action connectors<br/>email / jira]
-    SYNC[Live-sync connectors<br/>google drive]
+    SUP["Supervisor graph: plan / execute / decide / finalize"]
+    CTL["Control layer: claim verification + hallucination check"]
+    RES["Research graph: gather / synthesize / fact-check"]
+    EDU["Education engine: plan + quiz + flashcards"]
+    PER["Persona engine"]
+    ACT["Action connectors: email / jira"]
+    SYNC["Live-sync connectors: google drive"]
   end
 
-  SUP --> TR[Tool registry]
+  SUP --> TR["Tool registry"]
   RES --> CTL
   W --> SUP
   W --> WF
-  TR --> D[(SurrealDB)]
-
-  D --> |migrations 24-31| NEW[(agent_run, approval,<br/>workflow, user,<br/>sync_connection,<br/>persona, learning_progress)]
+  TR --> D[("SurrealDB")]
+  D -->|"migrations 24-31"| NEW[("new tables: agent_run, approval, workflow, user, sync_connection, persona, learning_progress")]
 ```
 
 ### Agent Engine

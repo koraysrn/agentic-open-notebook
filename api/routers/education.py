@@ -99,7 +99,7 @@ def _to_response(material: Any) -> EducationResponse:
 async def generate_material(request: EducationRequest) -> EducationResponse:
     """Generate a study plan, explanation, quiz, and flashcards."""
     try:
-        result = await education_graph.ainvoke(
+        result = await education_graph.ainvoke(  # type: ignore[call-overload]
             {"source_content": request.source_content}
         )
         material = result.get("material")

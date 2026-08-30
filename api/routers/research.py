@@ -66,7 +66,9 @@ def _claim_to_response(claim: Any) -> ClaimResponse:
 async def run_research(request: ResearchRequest) -> ResearchResponse:
     """Run the research workflow for a question."""
     try:
-        result = await research_graph.ainvoke({"question": request.question})
+        result = await research_graph.ainvoke(  # type: ignore[call-overload]
+            {"question": request.question}
+        )
 
         evidence = [
             EvidenceResponse(
