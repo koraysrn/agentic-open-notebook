@@ -184,10 +184,3 @@ This project is a derivative of **Open Notebook** © Luis Novo
 (<https://github.com/lfnovo/open-notebook>), used under the MIT License. The
 original copyright notice is preserved in [`LICENSE`](LICENSE).
 
----
-
-##  Acknowledgements
-
-- **Luis Novo & the Open Notebook community** — for the foundation this project
-  builds on.
-- The Esperanto, LangGraph and SurrealDB ecosystems.
