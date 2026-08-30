@@ -1,0 +1,440 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* ============================================================================
+   OPEN NOTEBOOK — DESIGN FOUNDATION ("Quiet Green")
+
+   The laws, in one breath:
+     fern acts · teal speaks (AI/system voice) · red destroys, and only destroys
+     warn is clay, never the action hues · color never washes a reading surface
+     hairline borders, near-zero shadows — popovers own the one real shadow
+     geometry is squared, 4–6px, floor is 4 · mono is for data, not prose
+
+   Layering: raw palette + semantic raws live in :root and are overridden by
+   `.dark`; every alias defined with var() re-resolves automatically — never
+   duplicate aliases into the dark block.
+   ========================================================================== */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-instrument-sans), "Helvetica Neue", Arial, sans-serif;
+  --font-mono: var(--font-spline-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: var(--font-bricolage), "Avenir Next", "Trebuchet MS", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-tint: var(--danger-tint);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* owned hues — exposed as utilities (bg-fern, text-teal, border-gold…) */
+  --color-fern: var(--fern);
+  --color-fern-deep: var(--fern-deep);
+  --color-fern-tint: var(--fern-tint);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-sage-tint: var(--sage-tint);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-tint: var(--gold-tint);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-teal-tint: var(--teal-tint);
+  --color-plum: var(--plum);
+  --color-plum-tint: var(--plum-tint);
+  --color-mauve: var(--mauve);
+  --color-mauve-deep: var(--mauve-deep);
+  --color-mauve-tint: var(--mauve-tint);
+  --color-slate-hue: var(--slate);
+  --color-slate-hue-deep: var(--slate-deep);
+  --color-slate-hue-tint: var(--slate-tint);
+  --color-violet-hue: var(--violet);
+  --color-violet-hue-deep: var(--violet-deep);
+  --color-violet-hue-tint: var(--violet-tint);
+  --color-clay: var(--clay);
+  --color-clay-deep: var(--clay-deep);
+  --color-clay-tint: var(--clay-tint);
+  --color-warn: var(--warn);
+  --color-warn-tint: var(--warn-tint);
+
+  /* content-type hues — dots, ticks, chips only; never washes */
+  --color-type-video: var(--type-video);
+  --color-type-video-soft: var(--type-video-soft);
+  --color-type-pdf: var(--type-pdf);
+  --color-type-pdf-soft: var(--type-pdf-soft);
+  --color-type-web: var(--type-web);
+  --color-type-web-soft: var(--type-web-soft);
+  --color-type-audio: var(--type-audio);
+  --color-type-audio-soft: var(--type-audio-soft);
+  --color-type-paper: var(--type-paper);
+  --color-type-paper-soft: var(--type-paper-soft);
+  --color-type-note: var(--type-note);
+  --color-type-note-soft: var(--type-note-soft);
+  --color-type-ai: var(--type-ai);
+  --color-type-ai-soft: var(--type-ai-soft);
+  --color-type-insight: var(--type-insight);
+  --color-type-insight-soft: var(--type-insight-soft);
+
+  /* evidence classes — citation chips & popovers */
+  --color-cite-source: var(--cite-source);
+  --color-cite-note: var(--cite-note);
+  --color-cite-derived: var(--cite-derived);
+  --color-cite-external: var(--cite-external);
+  --color-cite-synthesis: var(--cite-synthesis);
+  --color-cite-warn: var(--cite-warn);
+  --color-excerpt-wash: var(--excerpt-wash);
+
+  /* context states — per-source inclusion */
+  --color-ctx-full: var(--ctx-full);
+  --color-ctx-full-tint: var(--ctx-full-tint);
+  --color-ctx-insights: var(--ctx-insights);
+  --color-ctx-insights-tint: var(--ctx-insights-tint);
+
+  /* shape — soft and modern */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+
+  /* depth — hairlines separate; popovers own the one real shadow */
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-pop: var(--shadow-pop);
+  --shadow-overlay: var(--shadow-overlay);
+}
+
+:root {
+  /* --------------------------------------------------------------
+     core palette — the owned hues, red-free
+     -------------------------------------------------------------- */
+  --fern: #16a34a; /* success */
+  --fern-deep: #15803d;
+  --fern-tint: #e8f5ec;
+
+  --sage: #2563eb; /* info */
+  --sage-deep: #1d4ed8;
+  --sage-tint: #eaf1fd;
+
+  --gold: #d97706; /* warning */
+  --gold-deep: #b45309;
+  --gold-tint: #fdf3e3;
+
+  --teal: #635bff; /* accent — the AI/system voice */
+  --teal-deep: #4f46e5;
+  --teal-tint: #eeecff;
+
+  --plum: #6d28d9;
+  --plum-tint: #f1edfd;
+
+  --mauve: #a855f7;
+  --mauve-deep: #9333ea;
+  --mauve-tint: #f6eefe;
+
+  --slate: #64748b; /* neutral */
+  --slate-deep: #475569;
+  --slate-tint: #eef1f5;
+
+  --violet: #8b5cf6;
+  --violet-deep: #7c3aed;
+  --violet-tint: #f1edfd;
+
+  --clay: #d97706; /* warn raw */
+  --clay-deep: #b45309;
+  --clay-tint: #fdf3e3;
+
+  /* --------------------------------------------------------------
+     semantic raws — surfaces, ink, hairlines, action, danger
+     -------------------------------------------------------------- */
+  --bg: #f6f6f8;
+  --bg-deep: #f1f1f4;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-recessed: #f4f4f6;
+  --surface-sunken: #ececef;
+
+  --ink: #18181b;
+  --ink-soft: #52525b;
+  --ink-faint: #71717a;
+  --ink-faintest: #a1a1aa;
+
+  --line: #e4e4e7;
+  --line-soft: #ececef;
+  --line-strong: #18181b;
+
+  --primary: #635bff;
+  --primary-hover: #4f46e5;
+  --on-primary: #ffffff;
+
+  --danger: #dc2626;
+  --danger-deep: #b91c1c;
+  --danger-tint: #fdeaea;
+
+  --warn: var(--clay);
+  --warn-deep: var(--clay-deep);
+  --warn-tint: var(--clay-tint);
+
+  /* accent evidence washes */
+  --excerpt-wash: #f0efff;
+  --best-match: rgba(99, 91, 255, 0.12);
+  --best-match-ring: rgba(99, 91, 255, 0.12);
+
+  /* depth */
+  --shadow-soft: 0 1px 2px rgba(24, 24, 27, 0.05);
+  --shadow-lift: 0 2px 6px rgba(24, 24, 27, 0.06);
+  --shadow-pop: 0 4px 12px rgba(24, 24, 27, 0.08), 0 2px 4px rgba(24, 24, 27, 0.04);
+  --shadow-overlay: 0 12px 32px rgba(24, 24, 27, 0.14);
+
+  /* --------------------------------------------------------------
+     aliases — re-resolve automatically in dark; defined once
+     -------------------------------------------------------------- */
+  /* content-type hues */
+  --type-video: var(--plum);
+  --type-video-soft: var(--plum-tint);
+  --type-pdf: var(--gold);
+  --type-pdf-soft: var(--gold-tint);
+  --type-web: var(--sage);
+  --type-web-soft: var(--sage-tint);
+  --type-audio: var(--mauve);
+  --type-audio-soft: var(--mauve-tint);
+  --type-paper: var(--slate);
+  --type-paper-soft: var(--slate-tint);
+  --type-note: var(--gold);
+  --type-note-soft: var(--gold-tint);
+  --type-ai: var(--teal);
+  --type-ai-soft: var(--teal-tint);
+  --type-insight: var(--teal);
+  --type-insight-soft: var(--teal-tint);
+
+  /* evidence classes */
+  --cite-source: var(--teal);
+  --cite-source-deep: var(--teal-deep);
+  --cite-note: var(--gold);
+  --cite-note-deep: var(--gold-deep);
+  --cite-derived: var(--violet);
+  --cite-derived-deep: var(--violet-deep);
+  --cite-external: var(--slate);
+  --cite-external-deep: var(--slate-deep);
+  --cite-synthesis: var(--ink-faint);
+  --cite-warn: var(--clay);
+
+  /* context states */
+  --ctx-full: var(--fern);
+  --ctx-full-tint: var(--fern-tint);
+  --ctx-insights: var(--gold);
+  --ctx-insights-tint: var(--gold-tint);
+  --ctx-off-ink: var(--ink-soft);
+  --ctx-off-bg: var(--surface-raised);
+
+  /* motion — quick and quiet */
+  --motion-fast: 0.12s;
+  --motion-base: 0.15s;
+  --motion-slow: 0.25s;
+
+  /* --------------------------------------------------------------
+     shadcn semantic slots — the contract existing components use
+     -------------------------------------------------------------- */
+  --radius: 10px;
+  --background: var(--bg);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface-raised);
+  --popover-foreground: var(--ink);
+  --primary-foreground: var(--on-primary);
+  --secondary: var(--surface-recessed);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-recessed);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--surface-sunken);
+  --accent-foreground: var(--ink);
+  --destructive: var(--danger);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--teal);
+  --chart-1: var(--fern);
+  --chart-2: var(--teal);
+  --chart-3: var(--gold);
+  --chart-4: var(--plum);
+  --chart-5: var(--slate);
+  --sidebar: var(--bg-deep);
+  --sidebar-foreground: var(--ink);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--on-primary);
+  --sidebar-accent: var(--surface);
+  --sidebar-accent-foreground: var(--ink);
+  --sidebar-border: var(--line);
+  --sidebar-ring: var(--teal);
+}
+
+/* ============================================================================
+   DARK — overrides raw layers only; var() aliases re-resolve on their own
+   ========================================================================== */
+.dark {
+  /* core palette */
+  --fern: #34d399;
+  --fern-deep: #4ade80;
+  --fern-tint: #13251b;
+  --sage: #60a5fa;
+  --sage-deep: #7cb4fd;
+  --sage-tint: #16253a;
+  --gold: #fbbf24;
+  --gold-deep: #fcd34d;
+  --gold-tint: #2c2410;
+  --teal: #8b85ff;
+  --teal-deep: #a5a0ff;
+  --teal-tint: #1f1c3d;
+  --plum: #b9a3f2;
+  --plum-tint: #28233d;
+  --mauve: #d0a5ef;
+  --mauve-deep: #dcb8f4;
+  --mauve-tint: #31213d;
+  --slate: #94a3b8;
+  --slate-deep: #a9b6c6;
+  --slate-tint: #1f2733;
+  --violet: #b5a0f2;
+  --violet-deep: #c7b6f6;
+  --violet-tint: #292440;
+  --clay: #fbbf24;
+  --clay-deep: #fcd34d;
+  --clay-tint: #2c2410;
+
+  /* semantic raws */
+  --bg: #121216;
+  --bg-deep: #0d0d10;
+  --surface: #1a1a1f;
+  --surface-raised: #202027;
+  --surface-recessed: #202027;
+  --surface-sunken: #27272e;
+
+  --ink: #f4f4f5;
+  --ink-soft: #b0b0b8;
+  --ink-faint: #7d7d87;
+  --ink-faintest: #65656e;
+
+  --line: #2b2b32;
+  --line-soft: #24242b;
+  --line-strong: #f4f4f5;
+
+  --primary: #7d75ff;
+  --primary-hover: #8f88ff;
+  --on-primary: #ffffff;
+
+  --danger: #f87171;
+  --danger-deep: #f98f8f;
+  --danger-tint: #332021;
+
+  /* evidence washes */
+  --excerpt-wash: #22203a;
+  --best-match: rgba(125, 117, 255, 0.2);
+  --best-match-ring: rgba(125, 117, 255, 0.2);
+
+  /* depth */
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-lift: 0 2px 6px rgba(0, 0, 0, 0.5);
+  --shadow-pop: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-overlay: 0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors;
+  }
+
+  /* Ensure proper theme inheritance for popovers and dropdowns */
+  .dark {
+    color-scheme: dark;
+  }
+
+  :root {
+    color-scheme: light;
+  }
+
+  /* Ensure Radix UI components inherit theme properly */
+  [data-radix-popper-content-wrapper] {
+    @apply z-50;
+  }
+
+  /* Force theme inheritance for portaled content */
+  .dark [data-radix-popper-content-wrapper],
+  .dark [data-overlay-container] {
+    color-scheme: dark;
+  }
+
+  /* Ensure sidebar gets proper theme */
+  .app-sidebar {
+    background-color: var(--sidebar);
+    color: var(--sidebar-foreground);
+    border-color: var(--sidebar-border);
+  }
+
+  .sidebar-menu-item {
+    @apply transition-colors duration-150 ease-out;
+  }
+
+  .sidebar-menu-item:hover {
+    background-color: var(--sidebar-accent) !important;
+  }
+
+  /* Cards separate with hairlines, not shadows; hover raises the surface */
+  .card-hover {
+    @apply transition-colors duration-150 cursor-pointer;
+  }
+
+  .card-hover:hover {
+    background-color: var(--surface-raised) !important;
+    border-color: var(--border);
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* Ensure clickable cards show pointer cursor */
+  .clickable-card {
+    cursor: pointer !important;
+  }
+
+  .clickable-card * {
+    cursor: pointer !important;
+  }
+
+  /* Remove blockquotes's extra quotes in rendered markdown */
+  .prose blockquote p::before,
+  .prose blockquote p::after {
+    content: none !important;
+  }
+}

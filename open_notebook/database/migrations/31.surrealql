@@ -1,0 +1,3 @@
+-- Migration 31: Track the last workflow run (Road_Map Step 22).
+
+DEFINE FIELD IF NOT EXISTS last_run_at ON TABLE workflow TYPE option<string>;

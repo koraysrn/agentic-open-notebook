@@ -1,0 +1,3 @@
+-- Migration 26 rollback: remove the persona table.
+
+REMOVE TABLE IF EXISTS persona;

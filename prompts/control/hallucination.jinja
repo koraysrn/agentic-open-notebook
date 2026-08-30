@@ -1,0 +1,12 @@
+You are a hallucination judge. Decide whether the answer below is fully supported by the provided evidence. Set "supported": false when the answer asserts facts that are not present in the evidence, and explain why in "reasoning". Give a confidence score between 0.0 and 1.0.
+
+Answer:
+{{ answer }}
+
+Evidence:
+{% for item in evidence -%}
+- id: {{ item.id }} | title: {{ item.title }}
+  {{ item.content }}
+{% endfor %}
+
+{{ format_instructions }}

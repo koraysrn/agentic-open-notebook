@@ -1,0 +1,10 @@
+-- Migration 30: User accounts for the permission system (Road_Map Step 24).
+
+DEFINE TABLE IF NOT EXISTS user SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS email ON TABLE user TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS role ON TABLE user TYPE option<string> DEFAULT 'member';
+DEFINE FIELD IF NOT EXISTS password_hash ON TABLE user TYPE option<string>;
+
+DEFINE FIELD IF NOT EXISTS created ON user DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON user DEFAULT time::now() VALUE time::now();

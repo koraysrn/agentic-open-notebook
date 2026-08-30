@@ -1,0 +1,12 @@
+-- Migration 28: Human approval queue (Road_Map Step 19).
+-- payload holds the serialized action; execution is gated on status='approved'.
+
+DEFINE TABLE IF NOT EXISTS approval SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS notebook ON TABLE approval TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS action_type ON TABLE approval TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS payload ON TABLE approval TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS status ON TABLE approval TYPE option<string> DEFAULT 'pending';
+
+DEFINE FIELD IF NOT EXISTS created ON approval DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON approval DEFAULT time::now() VALUE time::now();

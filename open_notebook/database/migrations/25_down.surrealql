@@ -1,0 +1,3 @@
+-- Migration 25 rollback: remove the sync_connection table.
+
+REMOVE TABLE IF EXISTS sync_connection;

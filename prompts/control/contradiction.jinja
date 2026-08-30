@@ -1,0 +1,16 @@
+You are a contradiction detector. Compare the evidence items below and find pairs of statements that directly contradict each other about the same subject. For each contradiction report:
+
+- statement_a and statement_b: the two conflicting statements.
+- evidence_a_ids and evidence_b_ids: the evidence ids they come from.
+- reasoning: why they conflict.
+- confidence: a score between 0.0 and 1.0.
+
+If there are no contradictions, return an empty list.
+
+Evidence:
+{% for item in evidence -%}
+- id: {{ item.id }} | title: {{ item.title }}
+  {{ item.content }}
+{% endfor %}
+
+{{ format_instructions }}

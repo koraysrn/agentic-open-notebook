@@ -1,0 +1,15 @@
+-- Migration 24: Agent run persistence for the Agent Engine (ADR-008).
+-- One row per orchestrated agent run; state_json holds the serialized
+-- supervisor state so a run can be inspected and later resumed.
+
+DEFINE TABLE IF NOT EXISTS agent_run SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS notebook ON TABLE agent_run TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS agent ON TABLE agent_run TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS status ON TABLE agent_run TYPE option<string> DEFAULT 'running';
+DEFINE FIELD IF NOT EXISTS goal ON TABLE agent_run TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS state_json ON TABLE agent_run TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS final_answer ON TABLE agent_run TYPE option<string>;
+
+DEFINE FIELD IF NOT EXISTS created ON agent_run DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON agent_run DEFAULT time::now() VALUE time::now();

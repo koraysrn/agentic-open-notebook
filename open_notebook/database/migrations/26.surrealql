@@ -1,0 +1,10 @@
+-- Migration 26: Persona definitions (Road_Map Step 15).
+
+DEFINE TABLE IF NOT EXISTS persona SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS name ON TABLE persona TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS description ON TABLE persona TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS system_prompt ON TABLE persona TYPE option<string>;
+
+DEFINE FIELD IF NOT EXISTS created ON persona DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON persona DEFAULT time::now() VALUE time::now();

@@ -1,0 +1,3 @@
+-- Migration 28 rollback: remove the approval table.
+
+REMOVE TABLE IF EXISTS approval;

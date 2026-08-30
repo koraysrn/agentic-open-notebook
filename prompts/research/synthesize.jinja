@@ -1,0 +1,12 @@
+Answer the research question below using only the gathered evidence. Cite each factual statement with the evidence id it comes from. If the question concerns recency or validity, explicitly compare the evidence dates/contents and flag what is stale. Do not invent facts absent from the evidence.
+
+Research question:
+{{ question }}
+
+Evidence:
+{% for item in evidence -%}
+- id: {{ item.id }} | title: {{ item.title }}
+  {{ item.content }}
+{% endfor %}
+
+Report:

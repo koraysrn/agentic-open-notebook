@@ -1,0 +1,19 @@
+You are a verification layer. Split the answer below into atomic claims and label each claim with exactly one of these labels:
+
+- verified: directly supported by the provided evidence; put the supporting evidence id into evidence_ids.
+- external: grounded in general world knowledge rather than the provided evidence.
+- inferred: a reasoned conclusion drawn from the provided evidence.
+- unverified: not supported by the evidence and not general knowledge.
+
+Never present an unsupported claim as fact. For every claim, give a confidence score between 0.0 and 1.0.
+
+Answer:
+{{ answer }}
+
+Evidence:
+{% for item in evidence -%}
+- id: {{ item.id }} | title: {{ item.title }}
+  {{ item.content }}
+{% endfor %}
+
+{{ format_instructions }}

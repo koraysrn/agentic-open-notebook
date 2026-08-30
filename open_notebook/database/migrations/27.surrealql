@@ -1,0 +1,11 @@
+-- Migration 27: Adaptive learning progress (Road_Map Step 17).
+
+DEFINE TABLE IF NOT EXISTS learning_progress SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS notebook ON TABLE learning_progress TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS subject ON TABLE learning_progress TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS score ON TABLE learning_progress TYPE option<float>;
+DEFINE FIELD IF NOT EXISTS weak_topics ON TABLE learning_progress TYPE option<array<string>>;
+
+DEFINE FIELD IF NOT EXISTS created ON learning_progress DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON learning_progress DEFAULT time::now() VALUE time::now();

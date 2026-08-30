@@ -1,0 +1,3 @@
+-- Migration 27 rollback: remove the learning_progress table.
+
+REMOVE TABLE IF EXISTS learning_progress;

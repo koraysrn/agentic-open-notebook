@@ -1,0 +1,12 @@
+-- Migration 29: Workflow definitions (Road_Map Step 21).
+-- definition is a JSON string referencing only registered agent/tool names.
+
+DEFINE TABLE IF NOT EXISTS workflow SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS name ON TABLE workflow TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS definition ON TABLE workflow TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS schedule ON TABLE workflow TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS enabled ON TABLE workflow TYPE option<bool> DEFAULT true;
+
+DEFINE FIELD IF NOT EXISTS created ON workflow DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON workflow DEFAULT time::now() VALUE time::now();

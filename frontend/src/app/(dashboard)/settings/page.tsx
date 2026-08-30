@@ -1,0 +1,45 @@
+'use client'
+
+import Link from 'next/link'
+
+import { AppShell } from '@/components/layout/AppShell'
+import { SettingsForm } from './components/SettingsForm'
+import { useSettings } from '@/lib/hooks/use-settings'
+import { Button } from '@/components/ui/button'
+import { KeyRound, RefreshCw } from 'lucide-react'
+import { useTranslation } from '@/lib/hooks/use-translation'
+
+export default function SettingsPage() {
+  const { t } = useTranslation()
+  const { refetch } = useSettings()
+
+  return (
+    <AppShell>
+      <div className="flex-1 overflow-y-auto">
+        <div className="p-6">
+          <div className="max-w-4xl">
+            <div className="flex items-center gap-4 mb-6">
+              <h1 className="font-display text-2xl font-bold tracking-tight">{t('navigation.settings')}</h1>
+              <Button variant="outline" size="sm" onClick={() => refetch()}>
+                <RefreshCw className="h-4 w-4" />
+              </Button>
+            </div>
+
+            <Link
+              href="/settings/api-keys"
+              className="mb-6 flex items-center justify-between rounded-lg border bg-card p-4 transition-colors hover:bg-accent"
+            >
+              <span className="flex items-center gap-2 text-sm font-medium">
+                <KeyRound className="h-4 w-4 text-muted-foreground" />
+                {t('navigation.models')}
+              </span>
+              <span className="text-sm text-muted-foreground">→</span>
+            </Link>
+
+            <SettingsForm />
+          </div>
+        </div>
+      </div>
+    </AppShell>
+  )
+}

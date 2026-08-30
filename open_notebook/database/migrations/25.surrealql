@@ -1,0 +1,13 @@
+-- Migration 25: Live Sync connections (Road_Map Step 13).
+-- oauth_token_encrypted is always stored encrypted at rest.
+
+DEFINE TABLE IF NOT EXISTS sync_connection SCHEMAFULL;
+
+DEFINE FIELD IF NOT EXISTS provider ON TABLE sync_connection TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS notebook ON TABLE sync_connection TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS oauth_token_encrypted ON TABLE sync_connection TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS last_sync_at ON TABLE sync_connection TYPE option<string>;
+DEFINE FIELD IF NOT EXISTS status ON TABLE sync_connection TYPE option<string> DEFAULT 'idle';
+
+DEFINE FIELD IF NOT EXISTS created ON sync_connection DEFAULT time::now() VALUE $before OR time::now();
+DEFINE FIELD IF NOT EXISTS updated ON sync_connection DEFAULT time::now() VALUE time::now();

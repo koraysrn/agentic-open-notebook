@@ -1,0 +1,4 @@
+-- Migration 31 rollback: remove workflow.last_run_at.
+
+DEFINE FIELD IF NOT EXISTS last_run_at ON TABLE workflow TYPE option<string>;
+REMOVE FIELD IF NOT EXISTS last_run_at ON TABLE workflow;
