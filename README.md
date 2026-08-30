@@ -16,7 +16,7 @@
 
 ---
 
-## ✳️ A derivative of Open Notebook
+##  A derivative of Open Notebook
 
 This project is a **fork and extension** of
 [**Open Notebook**](https://github.com/lfnovo/open-notebook) by
@@ -34,7 +34,7 @@ and add a **multi-agent orchestration layer** on top of it.
 
 ---
 
-## 🧠 What we added
+##  What we added
 
 | Engine | What it does |
 |---|---|
@@ -58,7 +58,7 @@ Read the full story in [**docs/agentic/**](docs/agentic/README.md):
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```mermaid
 flowchart LR
@@ -87,23 +87,23 @@ never blocks on podcast generation, embeddings, source processing or agent runs.
 
 ---
 
-## ✨ Features (upstream + ours)
+##  Features (upstream + ours)
 
-- 🔒 **Private & self-hosted** — your data stays yours
-- 🤖 **Multi-provider AI** — OpenAI, Anthropic, Ollama, LM Studio and 15+ more
-- 🧠 **Multi-agent orchestration** — delegate a goal, the supervisor does the rest
-- 🛡️ **Verification layer** — every claim gets an evidence label
-- 📚 **Multi-modal sources** — PDFs, video, audio, web pages
-- 🎙️ **Multi-speaker podcasts** — 1–4 speakers with custom profiles
-- 🔍 **Full-text + vector search** across everything
-- 💬 **Context-aware chat** with citations
-- 🎓 **Study material generation** — plans, quizzes, flashcards
-- 🔗 **Live sync & actions** — Google Drive, email, Jira
-- 🌐 **14-locale UI**
+-  **Private & self-hosted** — your data stays yours
+-  **Multi-provider AI** — OpenAI, Anthropic, Ollama, LM Studio and 15+ more
+-  **Multi-agent orchestration** — delegate a goal, the supervisor does the rest
+-  **Verification layer** — every claim gets an evidence label
+-  **Multi-modal sources** — PDFs, video, audio, web pages
+-  **Multi-speaker podcasts** — 1–4 speakers with custom profiles
+-  **Full-text + vector search** across everything
+-  **Context-aware chat** with citations
+-  **Study material generation** — plans, quizzes, flashcards
+-  **Live sync & actions** — Google Drive, email, Jira
+-  **14-locale UI**
 
 ---
 
-## 🚀 Quick start
+##  Quick start
 
 ### Docker (recommended)
 
@@ -148,7 +148,7 @@ Or all at once: `make start-all` · status: `make status` · stop: `make stop-al
 
 ---
 
-## 🧪 Tests & quality
+##  Tests & quality
 
 ```bash
 uv run pytest tests/        # 761 backend tests
@@ -163,7 +163,7 @@ CI runs the same suite on every push (see
 
 ---
 
-## 🛠️ Built with
+##  Built with
 
 [Python](https://www.python.org/) ·
 [FastAPI](https://fastapi.tiangolo.com/) ·
@@ -176,7 +176,7 @@ CI runs the same suite on every push (see
 
 ---
 
-## 📄 License & attribution
+##  License & attribution
 
 Distributed under the **MIT License** — see [`LICENSE`](LICENSE).
 
@@ -186,7 +186,7 @@ original copyright notice is preserved in [`LICENSE`](LICENSE).
 
 ---
 
-## 🙏 Acknowledgements
+##  Acknowledgements
 
 - **Luis Novo & the Open Notebook community** — for the foundation this project
   builds on.
