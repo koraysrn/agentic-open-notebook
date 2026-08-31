@@ -16,19 +16,19 @@
 
 ---
 
-##  A derivative of Open Notebook
+##  Built on Open Notebook
 
-This project is a **fork and extension** of
+This project is an **independent extension** of
 [**Open Notebook**](https://github.com/lfnovo/open-notebook) by
 [Luis Novo](https://github.com/lfnovo), the open-source, privacy-focused
 alternative to Google's Notebook LM.
 
-We keep the entire upstream foundation — the three-tier architecture
+We build on the Open Notebook foundation — the three-tier architecture
 (Next.js → FastAPI → SurrealDB), multi-provider AI (18+ providers via
 Esperanto), multi-speaker podcasts, vector/text search, and the 14-locale UI —
 and add a **multi-agent orchestration layer** on top of it.
 
-> **Upstream:** <https://github.com/lfnovo/open-notebook> ·
+> **Upstream:** https://github.com/lfnovo/open-notebook ·
 > **Website:** <https://www.open-notebook.ai> ·
 > **License:** MIT ([`LICENSE`](LICENSE), copyright © Luis Novo)
 
